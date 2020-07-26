@@ -32,7 +32,9 @@ def home():
 
 @app.route('/api/v1/resources/books/all', methods=['GET'])
 def api_all():
-    return jsonify(books)
+    response = jsonify(books)
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    return response
 
 
 @app.route('/api/v1/resources/books', methods=['GET'])
@@ -56,6 +58,8 @@ def api_id():
 
     # Use the jsonify function from Flask to convert our list of
     # Python dictionaries to the JSON format.
-    return jsonify(results)
+    response = jsonify(results)
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    return response
 
 app.run()
