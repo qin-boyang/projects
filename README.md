@@ -23,3 +23,5 @@
 # add response header to python refer to: https://www.kite.com/python/examples/1033/flask-add-custom-headers-to-a-response
 # fix CORS issues refer to: https://www.techiediaries.com/fix-cors-with-angular-cli-proxy-configuration/
 
+# html static file contains Ajax call. refer to : https://www.w3schools.com/xml/ajax_intro.asp
+
