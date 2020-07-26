@@ -24,8 +24,9 @@ def api_all():
     conn.row_factory = dict_factory
     cur = conn.cursor()
     all_books = cur.execute('SELECT * FROM books;').fetchall()
-
-    return jsonify(all_books)
+    response = jsonify(all_books)
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    return response
 
 
 
@@ -64,7 +65,9 @@ def api_filter():
     cur = conn.cursor()
 
     results = cur.execute(query, to_filter).fetchall()
+    response = jsonify(results)
+    response.headers['Access-Control-Allow-Origin'] = '*'
 
-    return jsonify(results)
+    return response
 
 app.run()
