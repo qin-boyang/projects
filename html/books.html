@@ -1,0 +1,36 @@
+<div style="text-align:center">
+  <h1>
+    Welcome to HUIYUAN CHEN!
+  </h1>
+</div>
+
+<div id="demo">
+<h2>The XMLHttpRequest Object to call Python REST API service</h2>
+<button type="button" onclick="loadDoc()">HUIYUAN, click here</button>
+</div>
+
+<script>
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      //document.getElementById("demo").innerHTML =this.responseText;
+	  document.getElementById("demo").innerHTML = displayTextToJsonToHtml(this.responseText);
+    }
+  };
+  xhttp.open("GET", "http://127.0.0.1:5000/api/v1/resources/books/all", true);
+  xhttp.send();
+}
+
+function displayTextToJsonToHtml(responseText) {
+	var responseJson = JSON.parse(responseText);
+	//console.log(responseJson);
+	var responseHtml = '<ul>';
+	responseJson.forEach(function(element){
+		responseHtml = responseHtml + "<li>" + "Title: " + element.title; + "</li>";
+		//console.log(element.author + " -- " + element.title);
+	});
+	responseHtml = responseHtml + '</ul>';
+	return responseHtml;
+}
+</script>
