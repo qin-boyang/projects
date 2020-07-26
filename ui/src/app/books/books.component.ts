@@ -9,8 +9,8 @@ import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
 export class BooksComponent implements OnInit {
 
   private url = 'http://localhost:5000/api/v1/resources/books/all';
-  private booksStringify;
-  private books;
+  private booksStringify: string;
+  private books: any;
 
   constructor(private http: HttpClient) {
   }
